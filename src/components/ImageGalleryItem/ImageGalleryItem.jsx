@@ -1,10 +1,12 @@
 import PropTypes from 'prop-types';
 
+import { ImgItem, Image } from './ImageGalleryItem.styled';
+
 export const ImageGalleryItem = ({large, small, alt, onClick }) => {
     return (
-        <li onClick={() => onClick(large)}>
-            <img src={small} alt={alt} />
-        </li>
+        <ImgItem onClick={() => onClick(large)}>
+            <Image src={small} alt={alt} />
+        </ImgItem>
     );
 }
 

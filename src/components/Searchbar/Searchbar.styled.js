@@ -4,6 +4,7 @@ import styled from "@emotion/styled";
 export const SearchContainer = styled.div`width: 100%;
     padding-top: 10px;
     padding-bottom: 10px;
+    margin-bottom: 10px;
     /* position: fixed; */
     background-color: rgba(165, 162, 163, 0.814);`
 
