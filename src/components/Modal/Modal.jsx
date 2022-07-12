@@ -14,33 +14,36 @@ export class Modal extends Component {
   }
 
 
-  handelKeydown= e => {
+  handelKeydown = e => {
             if (e.code === 'Escape') {
             this.props.onClose()
         }
     }
 
-    handelBackdropClick = e => {
-        if (e.currentTarget === e.target) {
-            this.props.onClose()
-        }
+  handelBackdropClick = e => {
+    if (e.currentTarget === e.target) {
+      this.props.onClose();
     }
+    };
+    
     render() {
-        const { img, alt } = this.props;
+        const { largeImg, alt } = this.props;
 
         return createPortal(
+          
             <div onClick={this.handelBackdropClick}>
                 <div>
-                    <img src={img} alt={alt} />
+                    <img src={largeImg} alt={alt} />
                 </div>
-            </div>,
+                </div>,
+          
             modalRoot
         )
     }
 }
 
 Modal.propTypes = {
-    img: PropTypes.string.isRequired,
+    largeImg: PropTypes.string.isRequired,
     alt: PropTypes.string.isRequired,
     onClose: PropTypes.func.isRequired,
 }

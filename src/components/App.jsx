@@ -60,13 +60,14 @@ export class App extends Component {
     const nextQuery = this.state.query;
     const prevPage = prevState.page;
     const nextPage = this.state.page;
-
+    const { query, page } = this.state;
+    
         if (prevQuery !== nextQuery) {
       try {
         this.setState({ isLoading: true, page: 1, images: [] });
-        const images = await fetchImages(this.state.query);
+        const images = await fetchImages(query);
         this.setState({
-          images: imagesMapper(images),
+          images: imagesMapper(images.data.hits),
         });
       } catch {
         return toast.error("We're sorry, nothing is found");
@@ -78,9 +79,9 @@ export class App extends Component {
     if (prevPage !== nextPage && nextPage !==1) {
          try {
         this.setState({ isLoading: true});
-        const newImages = await fetchImages(this.state.query, this.state.page);
+        const newImages = await fetchImages(query, page);
         this.setState(prevState => ({
-          images: [...prevState.images, ...imagesMapper(newImages)],
+          images: [...prevState.images, ...imagesMapper(newImages.data.hits)],
         }));
       } catch {
         return toast.error("We're sorry, nothing is found");

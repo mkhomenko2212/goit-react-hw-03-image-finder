@@ -1,6 +1,6 @@
 const imagesMapper = imageList => {
-    return imageList.map(({ id, webformatURL, largeImageURL }) => {
-        return { id, webformatURL, largeImageURL }
+    return imageList.map(({ id, webformatURL, largeImageURL, tags }) => {
+        return { id, webformatURL, largeImageURL,alt: tags }
     });
 }
 

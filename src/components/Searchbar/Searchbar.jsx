@@ -9,18 +9,22 @@ export class SearchBar extends Component {
         query: '',
     };
  handleNameChange = event => {
-    this.setState({ query: event.currentTarget.value.toLowerCase() });
+     this.setState({
+         query: event.currentTarget.value.toLowerCase()
+     });
     };
     
     handleSubmit = event => {
+        const { query } = this.state;
         event.preventDefault();
-        if (this.state.query.trim() === '') {
-            toast.error('Введите запрос');
-            return;
+        if (query.trim() === '') {
+           return toast.error('Введите запрос');
         }
-        this.props.onSubmit(this.state.query);
+        this.props.onSubmit(query);
         this.setState({ query: '' });
     };
+
+    
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
