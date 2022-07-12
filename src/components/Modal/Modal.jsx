@@ -1,9 +1,7 @@
 import PropTypes from 'prop-types';
 import { Component } from 'react';
-import { createPortal } from 'react-dom';
 import { Overlay, ModalStyled } from './Modal.styled';
 
-const modalRoot = document.querySelector('#modal-root');
 
 
 export class Modal extends Component { 
@@ -15,30 +13,30 @@ export class Modal extends Component {
   }
 
 
-  handelKeydown = e => {
-            if (e.code === 'Escape') {
-            this.props.onClose()
+    handelKeydown = e => {
+        if (e.code === 'Escape') {
+            this.props.closeModal()
         }
-    }
-
-  handelBackdropClick = e => {
-    if (e.currentTarget === e.target) {
-      this.props.onClose();
-    }
     };
+
+//   handelBackdropClick = e => {
+//     if (e.currentTarget === e.target) {
+//       this.props.onClose();
+//     }
+//     };
     
     render() {
-        const { largeImg, alt } = this.props;
+        const { largeImg, alt, closeModal } = this.props;
 
-        return createPortal(
+        return (
           
-            <Overlay onClick={this.handelBackdropClick}>
+            <Overlay onClick={closeModal}>
                 <ModalStyled>
                     <img src={largeImg} alt={alt} />
                 </ModalStyled>
-                </Overlay>,
+                </Overlay>
           
-            modalRoot
+        
         )
     }
 }

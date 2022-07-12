@@ -104,7 +104,7 @@ export class App extends Component {
     this.setState({ largeImg });
   };
 
-  closeModal = () => {
+  closeModal= () => {
     this.setState({ largeImg: null });
   };
 
@@ -129,7 +129,7 @@ export class App extends Component {
           <Modal
             largeImg={largeImg}
             alt={query}
-            onClose={this.closeModal}
+            closeModal={this.closeModal}
           />
         )}
       </div>
