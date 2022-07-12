@@ -2,6 +2,7 @@ import { Component } from "react"
 import PropTypes from 'prop-types';
 
 import { toast } from 'react-toastify';
+import { SearchButton, SearchContainer, SearchForm, SearchInput } from "./Searchbar.styled";
 
 
 export class SearchBar extends Component {
@@ -27,12 +28,13 @@ export class SearchBar extends Component {
     
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
-                <button type="submit">
+            <SearchContainer>
+            <SearchForm onSubmit={this.handleSubmit}>
+                <SearchButton type="submit">
                    
                     Search
-                </button>
-                <input
+                </SearchButton>
+                <SearchInput
                     type="text"
                     name="query"
                     value={this.state.query}
@@ -40,7 +42,8 @@ export class SearchBar extends Component {
                     autoComplete="off"
                     autoFocus
                     placeholder="Search images and photos"/>
-            </form>
+                </SearchForm>
+            </SearchContainer>
         );
     }
 }
